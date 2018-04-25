@@ -1,0 +1,38 @@
+<ion-header>
+
+  <ion-navbar color ="secondary">
+    <ion-title>Conversas</ion-title>
+
+    <ion-buttons end>
+      <button ion-button icon-only (click)="signout()">
+        <ion-icon name="exit"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+  <ion-list>
+    <ion-item-sliding *ngFor="let room of rooms">
+      <ion-item>
+        {{room.roomname}}
+        <ion-icon name="chatboxes" item-end (click)="joinRoom(room.key)"></ion-icon>
+      </ion-item>
+      <ion-item-options side= "left">
+        <button ion-button color="danger" (click) ="removeRoom(room.key)">
+            <ion-icon name="trash"></ion-icon>
+        </button>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
+
+  <ion-fab bottom right>
+      <button ion-fab color="secondary" (click)="addRoom()">
+        <ion-icon name="add"></ion-icon>
+      </button>
+    </ion-fab>
+
+</ion-content>
